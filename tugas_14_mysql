@@ -1,0 +1,8 @@
+DELIMITER $$
+MariaDB [belajar]> CREATE TRIGGER before_insert
+    -> BEFORE INSERT ON nilai_mahasiswa
+    -> FOR EACH ROW
+    -> BEGIN
+    -> INSERT INTO ipk_mahasiswa VALUES
+    -> (CONCAT (UPPER(New.nama),' (',New.nim,')'), ROUND(((New.semester_1 + NEW.semester_2 + NEW.semester_3)/3),2));
+    -> END$$
